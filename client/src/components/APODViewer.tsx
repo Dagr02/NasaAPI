@@ -36,7 +36,7 @@ const APODViewer: React.FC = () => {
         }
 
         try{
-            const res = await axios.get("http://localhost:3001/APOD", {params})
+            const res = await axios.get(`${process.env.BACK_END_API_URL}/APOD`, {params})
             const data = Array.isArray(res.data) ? res.data : [res.data]
             setApods(data)
             

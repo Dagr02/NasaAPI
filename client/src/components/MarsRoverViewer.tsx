@@ -61,7 +61,7 @@ const MarsRoverViewer: React.FC = () => {
     const fetchPhotos = async () => {
         setLoading(true)
         try {
-            const res = await axios.get("http://localhost:3001/MRP", {
+            const res = await axios.get(`${process.env.BACK_END_API_URL}/MRP`, {
                 params: {
                     ...filter,
                     page
