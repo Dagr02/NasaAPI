@@ -22,7 +22,7 @@ const NearEarthObjectViewer: React.FC = () => {
     const fetchNeo = async () => {
         setLoading(true)
         try {
-            const res = await axios.get(`${process.env.BACK_END_API_URL}/NeoWs`, {
+            const res = await axios.get(`${import.meta.env.VITE_BACK_END_API_URL}/NeoWs`, {
                 params: {
                     start_date: filters.start_date_string,
                     end_date: filters.end_date_string
