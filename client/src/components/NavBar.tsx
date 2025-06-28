@@ -9,7 +9,7 @@ import { useState } from "react"
 const NavBar: React.FC = () => {
     const [isMenuOpen, setMenuOpen] = useState(false)
     return (
-        <Navbar isBordered className="flex flex-col sm:flex-row">
+        <Navbar isBordered onMenuOpenChange={setMenuOpen}>
             <NavbarContent>
                 <NavbarMenuToggle 
                     aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -43,17 +43,17 @@ const NavBar: React.FC = () => {
                 </NavbarItem>
             </NavbarContent>
             <NavbarMenu>    
-                <NavbarMenuItem>
+                <NavbarMenuItem onClick={() => setMenuOpen(!isMenuOpen)}>
                     <Link to="/">
                         <span className="text-xl hover:text-primary"> Home </span>
                     </Link>
                 </NavbarMenuItem>
-                <NavbarMenuItem>
+                <NavbarMenuItem onClick={() => setMenuOpen(!isMenuOpen)}>
                     <Link to="/MRP">
                         <span className="text-xl hover:text-primary"> Mars Rover Photos </span>
                     </Link>
                 </NavbarMenuItem>
-                <NavbarMenuItem>
+                <NavbarMenuItem onClick={() => setMenuOpen(!isMenuOpen)}>
                     <Link to="/NeoWs">
                         <span className="text-xl hover:text-primary"> Near Earth Objects </span>
                     </Link>
