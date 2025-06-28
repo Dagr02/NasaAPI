@@ -3,11 +3,6 @@ const router = express.Router();
 
 const { getAPOD, getMRP, getNeoFeed } = require("../services/nasaService") 
 
-
-router.get("/", (req, res) => {
-    res.send("Hello World")
-})
-
 router.get("/APOD", async (req, res) => {
     try {
         const data = await getAPOD(req.query);
