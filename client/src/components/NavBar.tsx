@@ -43,17 +43,17 @@ const NavBar: React.FC = () => {
                 </NavbarItem>
             </NavbarContent>
             <NavbarMenu>    
-                <NavbarMenuItem onClick={() => setMenuOpen(!isMenuOpen)}>
+                <NavbarMenuItem>
                     <Link to="/">
                         <span className="text-xl hover:text-primary"> Home </span>
                     </Link>
                 </NavbarMenuItem>
-                <NavbarMenuItem onClick={() => setMenuOpen(!isMenuOpen)}>
+                <NavbarMenuItem>
                     <Link to="/MRP">
                         <span className="text-xl hover:text-primary"> Mars Rover Photos </span>
                     </Link>
                 </NavbarMenuItem>
-                <NavbarMenuItem onClick={() => setMenuOpen(!isMenuOpen)}>
+                <NavbarMenuItem>
                     <Link to="/NeoWs">
                         <span className="text-xl hover:text-primary"> Near Earth Objects </span>
                     </Link>
