@@ -1,6 +1,7 @@
 # NASA API Project
 
 A web application for consuming NASAs API and displaying the results.
+Currently hosted on: https://nasa-api-q5je.vercel.app/ via Vercel
 
 ## Project Structure
 
