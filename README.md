@@ -6,8 +6,9 @@ A web application for consuming NASAs API and displaying the results.
 
 ```
 .
-├── client/      # Frontend React application
-└── server/      # Backend server
+├── client/      # React / Vite Front-end
+└── server/      # Express / Node Back-end
+└── README.md
 ```
 
 ## Setup Instructions
@@ -25,7 +26,11 @@ A web application for consuming NASAs API and displaying the results.
    ```bash
    npm install
    ```
-3. Start the development server:
+3. Create a .env in /client directory(if doesn't exist) and enter your back-end url:
+   ```bash
+   VITE_BACK_END_API_URL=your-url-goes-here
+   ```
+4. Start the development server:
    ```bash
    npm run dev
    ```
@@ -39,14 +44,24 @@ A web application for consuming NASAs API and displaying the results.
    ```bash
    npm install
    ```
-3. Start the server:
-   ```bash
-   npm start
-   ```
-4. Get a NASA Api Key at `https://api.nasa.gov/`. 
-5. Create a .env in /server directory and enter:
+3. Get a NASA Api Key at `https://api.nasa.gov/`. 
+4. Create a .env in /server directory and enter your nasa api key:
     ```bash
    NASA_API_KEY= PERSONAL_NASA_API_KEY
+   ```
+5. In server/index.js replace:
+   ```bash
+   app.use(cors({
+      origin: "https://nasa-api-q5je.vercel.app",
+   }))
+   ```
+   with
+   ```bash
+   app.use(cors())
+   ```
+6. Start the server:
+   ```bash
+   npm start
    ```
 
 ## Development
