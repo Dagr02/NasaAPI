@@ -140,11 +140,6 @@
     }
 }
 
-@utility text-glow {
-    @apply relative;
-    text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
-}
-
 @utility star {
     @apply absolute rounded-full bg-white;
     box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);

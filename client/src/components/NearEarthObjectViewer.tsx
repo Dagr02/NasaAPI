@@ -2,7 +2,7 @@ import type { NeoFeedResponse, NeoFiltersType, NeoObject } from "@/types/NeoWs"
 import { useEffect, useState } from "react"
 import NeoFilters from "./NeoFilters"
 import CloseApproachTimeline from "./CloseApproachTimeline"
-import { Divider, Spinner } from "@heroui/react"
+import { Spinner } from "@heroui/react"
 import axios from "axios"
 import RiskCard from "./RiskCard"
 
