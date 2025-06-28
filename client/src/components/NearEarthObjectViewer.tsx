@@ -37,11 +37,11 @@ const NearEarthObjectViewer: React.FC = () => {
     }
 
     useEffect(() => {
-        const {start_date, end_date} = filters
+        const { start_date, end_date } = filters
 
-        if(end_date && start_date) {
+        if (end_date && start_date) {
             const diff = end_date.compare(start_date)
-            if(diff > 7){
+            if (diff > 7) {
                 alert("NASA API only supports a maximum range of 7 days")
                 return
             }
@@ -81,7 +81,7 @@ const NearEarthObjectViewer: React.FC = () => {
             <h1 className="text-4xl md:text-5xl font-bold mb-5 text-center">Near Earth Objects</h1>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div className="lg:col-span-1 sticky top-1/3 self-start h-fit"> 
+                <div className="hidden lg:block lg:col-span-1 lg:sticky lg:top-1/3 self-start h-fit z-10">
                     <NeoFilters filters={filters} setFilters={setFilters} />
                 </div>
 
@@ -96,6 +96,11 @@ const NearEarthObjectViewer: React.FC = () => {
                     {neoData && (
                         <>
                             <CloseApproachTimeline neoObjects={neoData.near_earth_objects} />
+
+                            <div className="block lg:hidden my-6">
+                                <NeoFilters filters={filters} setFilters={setFilters} />
+                            </div>
+
                             <div>
                                 <h2 className="text-3xl md:text-4xl mb-6 mt-10 text-center">Closest Approaches</h2>
                                 {filteredNeoObjects.length > 0 ? (
