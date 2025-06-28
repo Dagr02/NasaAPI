@@ -1,4 +1,4 @@
-import type { APOD, APODParams } from "@/types/APOD"
+import type { APOD } from "@/types/APOD"
 import { Button, DatePicker, Image, NumberInput, Pagination, Spinner, type DateValue } from "@heroui/react"
 import axios from "axios"
 import { XIcon } from "lucide-react"

@@ -1,5 +1,5 @@
 import type { MarsRoverParams, MarsRoverPhoto } from "@/types/MarsRover";
-import { Button, DatePicker, Image, NumberInput, Pagination, Select, SelectItem, Spinner, type DateValue } from "@heroui/react";
+import { Button, DatePicker, NumberInput, Pagination, Select, SelectItem, Spinner, type DateValue } from "@heroui/react";
 import axios from "axios";
 import { XIcon } from "lucide-react";
 import { useEffect, useState } from "react"

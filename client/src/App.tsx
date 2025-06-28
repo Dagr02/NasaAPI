@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom"
 import { Home } from "@/pages/Home"
 import NavBar from "./components/NavBar"
 import StarBackground from "./components/StarBackground"
-import { ThemeProvider } from "./contexts/ThemeContext"
 import MarsRoverPage from "./pages/MarsRoverPage"
 import NearEarthObjectPage from "./pages/NearEarthObjectPage"
 

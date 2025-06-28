@@ -39,9 +39,7 @@ const NearEarthObjectViewer: React.FC = () => {
     useEffect(() => {
         const {start_date, end_date} = filters
 
-        if(!start_date) return
-
-        if(end_date) {
+        if(end_date && start_date) {
             const diff = end_date.compare(start_date)
             if(diff > 7){
                 alert("NASA API only supports a maximum range of 7 days")
