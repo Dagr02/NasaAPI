@@ -9,7 +9,9 @@ const app = express()
 
 const nasaRouter = require('./routes/nasaRouter')
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: "https://nasa-api-q5je.vercel.app",
+}))
 app.use("/", nasaRouter)
 
 app.listen(3001, () => {
