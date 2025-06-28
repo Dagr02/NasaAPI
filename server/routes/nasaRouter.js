@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { getAPOD, getMRP } = require("../services/nasaService") 
+const { getAPOD, getMRP, getNeoFeed } = require("../services/nasaService") 
 
 
 router.get("/", (req, res) => {
@@ -28,12 +28,15 @@ router.get("/MRP", async (req, res) => {
 
 })
 
-router.get("/EPIC", (req,res) =>{
-
-})
-
-router.get("/NeoWs", (req, res) => {
-
+router.get("/NeoWs", async (req, res) => {
+    try{
+        console.log("Fetching neoWs data.")
+        const data = await getNeoFeed(req.query)
+        res.json(data)
+    }catch(err){
+        console.log(err)
+        res.status(500).json({error: 'Failed to fetch NeoWs data.'})
+    }
 })
 
 

@@ -24,6 +24,11 @@ const NavBar: React.FC = () => {
                         <span className="text-xl hover:text-primary"> Mars Rover Photos </span>
                     </Link>
                 </NavbarItem>
+                <NavbarItem>
+                    <Link to="/NeoWs">
+                        <span className="text-xl hover:text-primary"> Near Earth Objects </span>
+                    </Link>
+                </NavbarItem>
             </NavbarContent>
             <NavbarContent justify="end">
                 <NavbarItem>

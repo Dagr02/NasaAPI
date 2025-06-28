@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar"
 import StarBackground from "./components/StarBackground"
 import { ThemeProvider } from "./contexts/ThemeContext"
 import MarsRoverPage from "./pages/MarsRoverPage"
+import NearEarthObjectPage from "./pages/NearEarthObjectPage"
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route index element={<Home/>}/>
         <Route path="/MRP" element={<MarsRoverPage />} />
+        <Route path="/NeoWs" element={<NearEarthObjectPage /> } />
         <Route path="*"/>
       </Routes>
     </div>

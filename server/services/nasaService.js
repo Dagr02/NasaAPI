@@ -23,7 +23,7 @@ exports.getMRP = async (params = {}) => {
     }
 
     const endpoint = `${BASE_URL}/mars-photos/api/v1/rovers/${params.rover}/photos`
-    console.log(API_KEY)
+
     const res = await axios.get(endpoint, {
         params: {
             api_key: API_KEY,
@@ -32,5 +32,18 @@ exports.getMRP = async (params = {}) => {
     })
     console.log("Returned: ", res.data)
     console.log("Transforming & returning response")
+    return res.data
+}
+
+exports.getNeoFeed = async (params = {}) => {
+    const endpoint = `${BASE_URL}/neo/rest/v1/feed`
+    console.log("NeoWs API call at new dates: ", params.start_date, params.end_date)
+    const res = await axios.get(endpoint, {
+        params: {
+            api_key: API_KEY,
+            ...params,
+        }
+    })
+
     return res.data
 }

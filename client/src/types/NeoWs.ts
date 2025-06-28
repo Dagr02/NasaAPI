@@ -1,3 +1,5 @@
+import type { DateValue } from "@heroui/react";
+
 export interface NeoFeedResponse {
     element_count: number;
     near_earth_objects: Record<string, NeoObject[]>;
@@ -22,4 +24,14 @@ export interface NeoObject {
             kilometers: string;
         };
     }[];
+}
+
+export interface NeoFiltersType {
+    start_date?: DateValue | null; 
+    start_date_string?: string;
+    end_date?: DateValue | null;
+    end_date_string?: string;
+    minDiameter?: number;
+    maxDiameter?: number;
+    hazardousOnly?: boolean;
 }

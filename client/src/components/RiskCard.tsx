@@ -12,9 +12,9 @@ const RiskCard: React.FC<RiskCardProps> = ({ neo }) => {
     const date = neo.close_approach_data[0].close_approach_date
 
     return (
-        <Card className="p-4 bg-white rounded-lg shadow-md border border-gray-200">
+        <Card className="p-4 bg-card rounded-lg">
             <CardHeader className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-semibold text-gray-900">{neo.name}</h3>
+                <h3 className="text-lg font-semibold text-foreground">{neo.name}</h3>
                 <span className={`px-2 py-1 text-sm rounded-full ${neo.is_potentially_hazardous_asteroid ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'}`}>
                     {neo.is_potentially_hazardous_asteroid ? "Hazardous" : "Safe"}
                 </span>
@@ -22,29 +22,31 @@ const RiskCard: React.FC<RiskCardProps> = ({ neo }) => {
             <CardBody>
                 <div className="space-y-3">
                     <div className="flex justify-between items-center">
-                        <span className="text-gray-600">Size:</span>
-                        <span className="font-medium text-gray-900">
+                        <span className="text-foreground">Size:</span>
+                        <span className="font-medium text-foreground">
                             {diameter.estimated_diameter_min.toFixed(1)} - {diameter.estimated_diameter_max.toFixed(1)} km
                         </span>
                     </div>
                     <div className="flex justify-between items-center">
-                        <span className="text-gray-600">Speed:</span>
-                        <span className="font-medium text-gray-900">
+                        <span className="text-foreground">Speed:</span>
+                        <span className="font-medium text-foreground">
                             {velocity.toFixed(0)} km/h
                         </span>
                     </div>
                     <div className="flex justify-between items-center">
-                        <span className="text-gray-600">Miss Distance:</span>
-                        <span className="font-medium text-gray-900">
+                        <span className="text-foreground">Miss Distance:</span>
+                        <span className="font-medium text-foreground">
                             {missDistance.toFixed(0)} km
                         </span>
                     </div>
                     <div className="flex justify-between items-center">
-                        <span className="text-gray-600">Close Approach:</span>
-                        <span className="font-medium text-gray-900">{date}</span>
+                        <span className="text-foreground">Close Approach:</span>
+                        <span className="font-medium text-foreground">{date}</span>
                     </div>
                 </div>
             </CardBody>
         </Card>
     )
 }
+
+export default RiskCard
