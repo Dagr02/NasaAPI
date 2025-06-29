@@ -86,7 +86,7 @@ const MarsRoverViewer: React.FC = () => {
 
 
     return (
-        <div className="container">
+        <div data-testid="mars-rover-viewer-container" className="container">
             <div className="flex flex-col gap-5 md:flex-row md:items-center mt-10">
                 <Select
                     size="lg"

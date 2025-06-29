@@ -78,7 +78,7 @@ const NearEarthObjectViewer: React.FC = () => {
     const filteredNeoObjects = getFilteredNeoObjects(allNeoObjects)
 
     return (
-        <div className="container">
+        <div data-testid="near-earth-object-viewer" className="container">
             <h1 className="text-4xl md:text-5xl font-bold mb-5 text-center">Near Earth Objects</h1>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

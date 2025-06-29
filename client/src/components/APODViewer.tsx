@@ -58,7 +58,7 @@ const APODViewer: React.FC = () => {
     }
 
     return (
-        <div className="relative overflow-auto flex flex-col items-center justify-center px-4">
+        <div data-testid="apod-viewer-container" className="relative overflow-auto flex flex-col items-center justify-center px-4">
             <div className="container max-w-4xl mx-auto text-center z-10">
                 <div className="flex flex-row items-center justify-center mt-10 mb-6">
                     <Button 

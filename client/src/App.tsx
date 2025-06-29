@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar"
 import StarBackground from "./components/StarBackground"
 import MarsRoverPage from "./pages/MarsRoverPage"
 import NearEarthObjectPage from "./pages/NearEarthObjectPage"
+import { NotFound } from "./pages/NotFound"
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
         <Route index element={<Home/>}/>
         <Route path="/MRP" element={<MarsRoverPage />} />
         <Route path="/NeoWs" element={<NearEarthObjectPage /> } />
-        <Route path="*"/>
+        <Route path="*" element={<NotFound />}/>
       </Routes>
     </div>
   )
