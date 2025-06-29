@@ -29,7 +29,7 @@ Currently hosted on: https://nasa-api-q5je.vercel.app/ via Vercel
    ```
 3. Create a .env in /client directory(if doesn't exist) and enter your back-end url:
    ```bash
-   VITE_BACK_END_API_URL=your-url-goes-here
+   VITE_BACK_END_API_URL=your-url-goes-here // http://localhost:3001
    ```
 4. Start the development server:
    ```bash
