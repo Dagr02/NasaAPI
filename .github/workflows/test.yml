@@ -1,0 +1,38 @@
+name: Test Frontend & Backend
+on: 
+  push: 
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20]
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+      - name: use node.js
+        uses: actions/setup-node@v3     
+        with:
+          node-version: ${{matrix.node-version}}
+
+      - name: Install server dependencies
+      - working-directory: ./server
+      - run: npm ci
+
+      - name: Run server tests
+      - working-directory: ./server
+      - run: npm test
+
+      - name: Install client dependencies
+      - working-directory: ./client
+      - run: npm ci
+
+      - name: Run client tests
+      - working-directory: ./client
+      - run: npm test
+
