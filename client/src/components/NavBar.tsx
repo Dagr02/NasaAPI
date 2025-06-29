@@ -9,7 +9,7 @@ import { useState } from "react"
 const NavBar: React.FC = () => {
     const [isMenuOpen, setMenuOpen] = useState(false)
     return (
-        <Navbar isBordered onMenuOpenChange={setMenuOpen}>
+        <Navbar isBordered onMenuOpenChange={setMenuOpen} data-testid="navbar">
             <NavbarContent>
                 <NavbarMenuToggle 
                     aria-label={isMenuOpen ? "Close menu" : "Open menu"}
