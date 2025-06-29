@@ -67,11 +67,12 @@ const NearEarthObjectViewer: React.FC = () => {
             .flat()
             .map(neo => ({
                 ...neo,
-                closeApproachDate: neo.close_approach_data[0]?.close_approach_date ?? ""
+                closeApproachDate: neo.close_approach_data[0]?.close_approach_date ?? "",
+                missDistanceKm: parseFloat(neo?.close_approach_data[0]?.miss_distance.kilometers ?? "Infinity")
             }))
-            .sort((a, b) => {
-                return new Date(a.closeApproachDate).getTime() - new Date(b.closeApproachDate).getTime()
-            })
+            .sort((a, b) => 
+                a.missDistanceKm - b.missDistanceKm
+            )
         : []
 
     const filteredNeoObjects = getFilteredNeoObjects(allNeoObjects)

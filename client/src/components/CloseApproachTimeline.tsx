@@ -22,8 +22,8 @@ const CloseApproachTimeline: React.FC<CloseApproachTimelineProps> = ({ neoObject
                     <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
                         {neoObjects[date].map(neo => {
                             const velocity = parseFloat(neo.close_approach_data[0].relative_velocity.kilometers_per_hour).toFixed(0)
-                            const minSize = neo.estimated_diameter.kilometers.estimated_diameter_min.toFixed(1)
-                            const maxSize = neo.estimated_diameter.kilometers.estimated_diameter_max.toFixed(1)
+                            const minSize = neo.estimated_diameter.kilometers.estimated_diameter_min.toFixed(2)
+                            const maxSize = neo.estimated_diameter.kilometers.estimated_diameter_max.toFixed(2)
 
                             return (
                                 <div

@@ -24,7 +24,7 @@ const RiskCard: React.FC<RiskCardProps> = ({ neo }) => {
                     <div className="flex justify-between items-center">
                         <span className="text-foreground">Size:</span>
                         <span className="font-medium text-foreground">
-                            {diameter.estimated_diameter_min.toFixed(1)} - {diameter.estimated_diameter_max.toFixed(1)} km
+                            {diameter.estimated_diameter_min.toFixed(2)} - {diameter.estimated_diameter_max.toFixed(2)} km
                         </span>
                     </div>
                     <div className="flex justify-between items-center">

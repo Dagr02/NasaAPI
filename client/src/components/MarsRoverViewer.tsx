@@ -1,7 +1,7 @@
 import type { MarsRoverParams, MarsRoverPhoto } from "@/types/MarsRover";
-import { Button, DatePicker, NumberInput, Pagination, Select, SelectItem, Spinner, type DateValue } from "@heroui/react";
+import { Button, DatePicker, NumberInput, Pagination, Select, SelectItem, Spinner, Tooltip, type DateValue } from "@heroui/react";
 import axios from "axios";
-import { XIcon } from "lucide-react";
+import { InfoIcon, XIcon } from "lucide-react";
 import { useEffect, useState } from "react"
 
 const ROVERS = [
@@ -90,9 +90,19 @@ const MarsRoverViewer: React.FC = () => {
             <div className="flex flex-col gap-5 md:flex-row md:items-center mt-10">
                 <Select
                     size="lg"
+                    disabledKeys={["opportunity", "spirit"]}
                     placeholder="Select a Rover"
                     value={filter.rover}
                     onChange={(e) => handleFilterChange("rover", e.target.value)}
+                    startContent={
+                        <Tooltip content="Spirit & Opportunity are not available via Nasa API"
+                            
+                        > 
+                            <Button isIconOnly size="sm">
+                                <InfoIcon /> 
+                            </Button>
+                        </Tooltip>
+                    }
                 >
                     {ROVERS.map((rover) => (
                         <SelectItem key={rover.key}>
@@ -144,7 +154,6 @@ const MarsRoverViewer: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5">
-                {console.log("Photos:", photos)!}
                 {loading ? (
                     <div className="flex items-center justify-center min-h-[60vh] w-full col-span-full" >
                         <Spinner color="secondary" size="lg" />

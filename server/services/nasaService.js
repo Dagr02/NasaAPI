@@ -22,6 +22,10 @@ exports.getMRP = async (params = {}) => {
         throw new Error('Rover parameters is required');
     }
 
+    if(params.rover === "opportunity" || params.rover === "spirit"){
+        throw new Error("Spirit & Opportunity are no longer available via nasa public API.")
+    }
+
     const endpoint = `${BASE_URL}/mars-photos/api/v1/rovers/${params.rover}/photos`
 
     const res = await axios.get(endpoint, {
