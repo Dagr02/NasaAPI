@@ -65,9 +65,9 @@ Currently hosted on: https://nasa-api-q5je.vercel.app/ via Vercel
    npm start
    ```
 
-## Development
+## Local Development:
 - The client application runs on `http://localhost:5173` by default
 - The server runs on `http://localhost:3001` by default
 
 ## Project Details
-This project currently consumes NASAs: Astronomy Picture of the Day(APOD) API, Near Earth Object Web Service(NeoWs) API and Mars Rover Photos API and tries to present the API Data in a nice looking way which is easy to understand. 
+This project currently consumes NASAs: Astronomy Picture of the Day(APOD) API, Near Earth Object Web Service(NeoWs) API and Mars Rover Photos API and tries to present the API Data in a nice looking way which is easy to understand. It's deployed on Vercel & incorporates basic github action workflow.
