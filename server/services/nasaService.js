@@ -18,25 +18,47 @@ exports.getAPOD = async (params = {}) => {
 
 //mars rover photos
 exports.getMRP = async (params = {}) => {
-    if(!params.rover) {
+    if (!params.rover) {
         throw new Error('Rover parameters is required');
     }
 
-    if(params.rover === "opportunity" || params.rover === "spirit"){
+    if (params.rover === "opportunity" || params.rover === "spirit") {
         throw new Error("Spirit & Opportunity are no longer available via nasa public API.")
     }
+    //https://api.nasa.gov/mars-photos/api/v1/manifests/Curiosity/?api_key=Kc2zMNRUQaPwTmTNSU9HdjwJKKtRAYHkrIYLmzRC
+    const endpointPhotos = `${BASE_URL}/mars-photos/api/v1/rovers/${params.rover}/photos`
+    const endPointManifest = `${BASE_URL}/mars-photos/api/v1/manifests/${params.rover}`
 
-    const endpoint = `${BASE_URL}/mars-photos/api/v1/rovers/${params.rover}/photos`
 
-    const res = await axios.get(endpoint, {
+    const resPhotos = await axios.get(endpointPhotos, {
         params: {
             api_key: API_KEY,
             ...params,
         }
     })
-    console.log("Returned: ", res.data)
+
+    let totalPhotos = 0;
+    if (params.sol !== undefined) {
+        const resManifest = await axios.get(endPointManifest, {
+            params: {
+                api_key: API_KEY
+            }
+        })
+        const manifest = resManifest.data.photo_manifest
+        const solDay = manifest.photos.find((p) => p.sol === Number(params.sol))
+
+        if(solDay) {
+            totalPhotos = solDay.total_photos
+        }
+    }
+    
+    console.log("Returned: ", resPhotos.data)
+    console.log("Total photos: ", totalPhotos)
     console.log("Transforming & returning response")
-    return res.data
+    return {
+        photos: resPhotos.data.photos,
+        totalPhotos: totalPhotos
+    }
 }
 
 exports.getNeoFeed = async (params = {}) => {
