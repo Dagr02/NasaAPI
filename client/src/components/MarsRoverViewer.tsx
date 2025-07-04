@@ -39,6 +39,7 @@ const MarsRoverViewer: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(true)
     const [page, setPage] = useState<number>(1);
     const [photos, setPhotos] = useState<MarsRoverPhoto[]>([])
+    const [totalPhotos, setTotalPhotos] = useState<number>(0);
     const [filter, setFilter] = useState<MarsRoverParams>({})
     const [availableCameras, setAvailableCameras] = useState<typeof CAMERAS[keyof typeof CAMERAS]>([])
 
@@ -57,31 +58,40 @@ const MarsRoverViewer: React.FC = () => {
             }))
         }
     }
-
+    //2025-04-03
     const fetchPhotos = async () => {
         setLoading(true)
         try {
+            const { earth_date_string, ...filteredParams } = filter;
+
             const res = await axios.get(`${import.meta.env.VITE_BACK_END_API_URL}/MRP`, {
                 params: {
-                    ...filter,
+                    ...filteredParams,
                     page
                 }
             })
             setPhotos(res.data.photos)
-
+            setTotalPhotos(res.data.totalPhotos)
+            console.log("Photo length: ", res.data.photos.length)
             if (filter.rover) {
                 setAvailableCameras(CAMERAS[filter.rover as keyof typeof CAMERAS])
             }
         } catch (err) {
             console.error("Error fetching Mars photos:", err)
             setPhotos([])
+            setTotalPhotos(0);
         } finally {
             setLoading(false)
         }
     }
 
     useEffect(() => {
-        fetchPhotos()
+        if (filter.rover) {
+            fetchPhotos()
+        } else {
+            setLoading(false);
+        }
+
     }, [filter, page])
 
 
@@ -96,11 +106,11 @@ const MarsRoverViewer: React.FC = () => {
                     onChange={(e) => handleFilterChange("rover", e.target.value)}
                     startContent={
                         <Tooltip content="Spirit & Opportunity are not available via Nasa API"
-                            
-                        > 
-                            <Button isIconOnly size="sm">
-                                <InfoIcon /> 
-                            </Button>
+
+                        >
+                            <span className="pointer-events-auto">
+                                <InfoIcon />
+                            </span>
                         </Tooltip>
                     }
                 >
@@ -187,7 +197,7 @@ const MarsRoverViewer: React.FC = () => {
             </div>
             {photos.length > 0 &&
                 <Pagination
-                    total={photos.length / 25}
+                    total={Math.ceil(totalPhotos / 25)}
                     page={page}
                     onChange={setPage}
                     className="flex flex-row items-center justify-center mt-6"
